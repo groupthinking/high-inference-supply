@@ -2,13 +2,13 @@ import { store } from './store.js';
 import { haptics } from './haptics.js';
 
 /**
- * Renders a tactile, architectural piece action bar with size pills,
- * Stage inspection trigger, and direct Add to Bag button.
+ * Refined, minimal inline piece action bar for light gallery and dark archive surfaces.
  */
 export function renderPieceActionBar(product) {
   const sizesHtml =
     product.sizes.length > 1
       ? `<div class="pab__sizes" role="group" aria-label="Select size for ${product.shortName}">
+          <span class="pab__size-label">Size</span>
           ${product.sizes
             .map(
               (size) => `
@@ -22,18 +22,19 @@ export function renderPieceActionBar(product) {
             )
             .join('')}
         </div>`
-      : `<div class="pab__sizes"><span class="pab__os">ONE SIZE · ARCHIVAL FIT</span></div>`;
+      : `<div class="pab__sizes"><span class="pab__size-label">One Size · Archival Proportion</span></div>`;
 
   return `
     <div class="pab" data-product-id="${product.id}" data-selected-size="${product.defaultSize}">
       ${sizesHtml}
       <div class="pab__actions">
-        <button type="button" class="btn btn--ghost pab__inspect" data-inspect="${product.id}">
-          Inspect Stage
-        </button>
-        <button type="button" class="btn btn--primary pab__add" data-add="${product.id}">
+        <button type="button" class="lux-btn lux-btn--ink pab__add" data-add="${product.id}">
           <span>Add to Bag</span>
-          <span class="pab__price">$${product.price}</span>
+          <span class="pab__dot" aria-hidden="true">·</span>
+          <span>$${product.price}</span>
+        </button>
+        <button type="button" class="lux-btn lux-btn--outline pab__inspect" data-inspect="${product.id}">
+          Viewing Room
         </button>
       </div>
     </div>

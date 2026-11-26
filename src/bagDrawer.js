@@ -25,28 +25,28 @@ export function initBagDrawer() {
 
     if (state.checkoutComplete) {
       bodyHtml = `
-        <div class="drawer__empty drawer__empty--success">
-          <span class="mono-tag mono-tag--ochre">ORDER STAGED // HIGHINFERENCE.COM</span>
-          <h3>Ready for Shopify Checkout</h3>
+        <div class="drawer__empty">
+          <span class="drawer__kicker">Allocation Staged</span>
+          <h3>Ready for Checkout</h3>
           <p>
-            Your Drop 01 allocation is confirmed in this session. Connect your live Shopify Storefront API
-            token to route directly to highinference.com checkout.
+            Your Edition 01 selection is reserved in this session. Connect your live Shopify Storefront
+            token to route seamlessly to highinference.com checkout.
           </p>
-          <button type="button" class="btn btn--primary" id="drawer-continue-btn">
-            Continue Exploring Drop 01
+          <button type="button" class="lux-btn lux-btn--ink" id="drawer-continue-btn">
+            Return to Archive
           </button>
         </div>
       `;
     } else if (state.bag.length === 0) {
       bodyHtml = `
         <div class="drawer__empty">
-          <span class="mono-tag">BAG EMPTY // 0 ITEMS</span>
-          <h3>No artifacts staged yet.</h3>
+          <span class="drawer__kicker">Empty</span>
+          <h3>Your bag is currently empty.</h3>
           <p>
-            Explore Drop 01 garments and mission patches, or add the complete archival set in Act 05.
+            Explore our heavyweight garments and embroidered insignia, or reserve the complete Edition 01 archive.
           </p>
-          <button type="button" class="btn btn--ghost" id="drawer-jump-lineup">
-            Jump to Complete Lineup
+          <button type="button" class="lux-btn lux-btn--outline" id="drawer-jump-lineup">
+            View Complete Archive
           </button>
         </div>
       `;
@@ -56,8 +56,8 @@ export function initBagDrawer() {
           <div class="drawer__ship-text">
             ${
               totals.freeShippingUnlocked
-                ? '<strong>FREE PRIORITY SHIPPING UNLOCKED</strong>'
-                : `Add <strong>$${totals.remainingForFreeShip}</strong> more for free archival shipping`
+                ? 'Complimentary priority archival shipping unlocked.'
+                : `Add $${totals.remainingForFreeShip} more for complimentary archival shipping.`
             }
           </div>
           <div class="drawer__ship-track">
@@ -79,9 +79,9 @@ export function initBagDrawer() {
                       <span class="bag-item__price">$${p.price * item.qty}</span>
                     </div>
                     <div class="bag-item__meta">
-                      <span>SIZE: ${item.size}</span>
+                      <span>${p.color}</span>
                       <span>·</span>
-                      <span>${p.sku}</span>
+                      <span>Size ${item.size}</span>
                     </div>
                     <div class="bag-item__controls">
                       <div class="qty-stepper">
@@ -103,11 +103,11 @@ export function initBagDrawer() {
     drawerEl.innerHTML = `
       <div class="drawer__header">
         <div>
-          <span class="mono-tag">SUPPLY BAG</span>
-          <h2 class="drawer__title">Allocation [ ${count} ]</h2>
+          <span class="drawer__kicker">High Inference</span>
+          <h2 class="drawer__title">Shopping Bag (${count})</h2>
         </div>
-        <button type="button" class="drawer__close" id="drawer-close-btn" aria-label="Close bag drawer">
-          CLOSE [ × ]
+        <button type="button" class="drawer__close" id="drawer-close-btn" aria-label="Close shopping bag">
+          Close
         </button>
       </div>
 
@@ -123,26 +123,24 @@ export function initBagDrawer() {
             totals.appliedBundle
               ? `
             <div class="drawer__row drawer__row--discount">
-              <span>BUNDLE: ${totals.appliedBundle.name.toUpperCase()}</span>
+              <span>${totals.appliedBundle.name}</span>
               <span>−$${totals.discount}</span>
             </div>
           `
               : ''
           }
           <div class="drawer__row">
-            <span>SHIPPING</span>
-            <span>${totals.freeShippingUnlocked ? 'FREE' : 'CALCULATED AT CHECKOUT'}</span>
+            <span>Shipping</span>
+            <span>${totals.freeShippingUnlocked ? 'Complimentary' : 'Calculated at checkout'}</span>
           </div>
           <div class="drawer__row drawer__row--total">
-            <span>SUBTOTAL</span>
+            <span>Subtotal</span>
             <span>$${totals.subtotal} USD</span>
           </div>
-          <button type="button" class="btn btn--ochre btn--lg drawer__checkout" id="drawer-checkout-btn">
+          <button type="button" class="lux-btn lux-btn--ink drawer__checkout" id="drawer-checkout-btn">
             Proceed to Checkout · $${totals.subtotal}
           </button>
-          <p class="drawer__note">
-            highinference.com · Shopify Checkout &amp; Shop Pay compatible
-          </p>
+          <p class="drawer__note">highinference.com · Shopify Checkout &amp; Shop Pay</p>
         </div>
       `
           : ''

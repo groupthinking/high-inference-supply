@@ -24,15 +24,12 @@ export function initProductStage() {
       <div class="stage__shell">
         <div class="stage__topbar">
           <div class="stage__crumb">
-            <span class="mono-tag">${product.sku}</span>
+            <span>Viewing Room</span>
             <span class="stage__crumb-sep">/</span>
-            <span class="mono-tag">${product.concept.toUpperCase()}</span>
-            <span class="stage__crumb-sep">/</span>
-            <span class="mono-tag">INTERACTIVE STAGE</span>
+            <span>N° ${product.number} · ${product.concept}</span>
           </div>
-          <button type="button" class="stage__close" id="stage-close-btn" aria-label="Close product stage">
-            <span>CLOSE</span>
-            <span class="mono-tag">[ ESC ]</span>
+          <button type="button" class="stage__close" id="stage-close-btn" aria-label="Close viewing room">
+            Close
           </button>
         </div>
 
@@ -45,35 +42,31 @@ export function initProductStage() {
                 class="stage__img"
                 id="stage-main-img"
               />
-              <div class="stage__caption">
-                <span>${activeAngle.label.toUpperCase()}</span>
-                <span>${activeAngle.caption}</span>
-              </div>
             </div>
 
-            <div class="stage__angles" role="tablist" aria-label="Product angles">
-              ${product.angles
-                .map(
-                  (ang, idx) => `
-                <button
-                  type="button"
-                  role="tab"
-                  class="stage__angle-btn ${idx === angleIdx ? 'is-active' : ''}"
-                  data-angle-idx="${idx}"
-                  aria-selected="${idx === angleIdx ? 'true' : 'false'}"
-                >
-                  <span class="stage__angle-num">0${idx + 1}</span>
-                  <span>${ang.label}</span>
-                </button>
-              `
-                )
-                .join('')}
+            <div class="stage__viewer-foot">
+              <div class="stage__angles" role="tablist" aria-label="Product angles">
+                ${product.angles
+                  .map(
+                    (ang, idx) => `
+                  <button
+                    type="button"
+                    role="tab"
+                    class="stage__angle-btn ${idx === angleIdx ? 'is-active' : ''}"
+                    data-angle-idx="${idx}"
+                    aria-selected="${idx === angleIdx ? 'true' : 'false'}"
+                  >${ang.label}</button>
+                `
+                  )
+                  .join('')}
+              </div>
+              <p class="stage__caption">${activeAngle.caption}</p>
             </div>
           </div>
 
           <div class="stage__detail-col">
             <div class="stage__head">
-              <span class="mono-tag mono-tag--ochre">DROP 01 · ${product.category.toUpperCase()}</span>
+              <span class="stage__sku">${product.sku}</span>
               <h2 class="stage__title" id="stage-title">${product.name}</h2>
               <div class="stage__price">$${product.price} USD</div>
             </div>
@@ -82,8 +75,8 @@ export function initProductStage() {
 
             <div class="stage__size-block">
               <div class="stage__label-row">
-                <span class="mono-tag">SELECT SIZE</span>
-                <span class="mono-tag">${product.color.toUpperCase()}</span>
+                <span>Select Size</span>
+                <span>${product.color}</span>
               </div>
               <div class="stage__sizes" role="group" aria-label="Choose size">
                 ${product.sizes
@@ -101,32 +94,20 @@ export function initProductStage() {
               </div>
             </div>
 
-            <dl class="spec-grid spec-grid--compact">
-              <div class="spec-grid__row">
-                <dt>GARMENT / BLANK</dt>
-                <dd>${product.blank}</dd>
-              </div>
-              <div class="spec-grid__row">
-                <dt>PRINT METHOD</dt>
-                <dd>${product.printMethod}</dd>
-              </div>
-              <div class="spec-grid__row">
-                <dt>MARK PLACEMENT</dt>
-                <dd>${product.markRank}</dd>
-              </div>
-              <div class="spec-grid__row">
-                <dt>PACKAGING SPEC</dt>
-                <dd>${product.packaging}</dd>
-              </div>
+            <dl class="stage__specs">
+              <div><dt>Material</dt><dd>${product.blank}</dd></div>
+              <div><dt>Execution</dt><dd>${product.printMethod}</dd></div>
+              <div><dt>Provenance</dt><dd>${product.markRank}</dd></div>
+              <div><dt>Dispatch</dt><dd>${product.packaging}</dd></div>
             </dl>
 
             <div class="stage__cta-stack">
-              <button type="button" class="btn btn--primary btn--lg stage__add-btn" id="stage-add-btn">
+              <button type="button" class="lux-btn lux-btn--ink stage__add-btn" id="stage-add-btn">
                 <span>Add to Bag — ${state.stageSize}</span>
                 <span>$${product.price}</span>
               </button>
-              <button type="button" class="btn btn--ghost stage__add-open-btn" id="stage-add-open-btn">
-                Add &amp; Open Bag Drawer
+              <button type="button" class="lux-btn lux-btn--outline stage__add-open-btn" id="stage-add-open-btn">
+                Add &amp; Open Bag
               </button>
             </div>
           </div>
@@ -134,7 +115,6 @@ export function initProductStage() {
       </div>
     `;
 
-    // Bind subtle 3D pointer tilt on the stage viewer
     const tiltCanvas = document.getElementById('stage-tilt-canvas');
     const mainImg = document.getElementById('stage-main-img');
     if (tiltCanvas && mainImg) {
@@ -142,10 +122,10 @@ export function initProductStage() {
         const rect = tiltCanvas.getBoundingClientRect();
         const nx = (e.clientX - rect.left) / rect.width - 0.5;
         const ny = (e.clientY - rect.top) / rect.height - 0.5;
-        mainImg.style.transform = `perspective(900px) rotateY(${nx * 8}deg) rotateX(${ny * -8}deg) scale(1.03)`;
+        mainImg.style.transform = `perspective(1000px) rotateY(${nx * 6}deg) rotateX(${ny * -6}deg) scale(1.025)`;
       });
       tiltCanvas.addEventListener('pointerleave', () => {
-        mainImg.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)';
+        mainImg.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
       });
     }
   };

@@ -3,79 +3,78 @@ export function initAct4Spread() {
   if (!section) return;
 
   section.innerHTML = `
-    <div class="chapter-header">
-      <div class="chapter-header__index">ACT 04 // ANALOG SPREAD</div>
-      <div class="chapter-header__body">
-        <h2 class="chapter-header__title">Shoppers Go Analog</h2>
-        <p class="chapter-header__desc">
-          The best merch is built around the community, not the logo. Heavyweight cotton, cracked plastisol,
-          brass rivets, and screenprinted schematics built to outlast the next model checkpoint.
-        </p>
+    <div class="gallery-wrap">
+      <div class="editorial-quote" data-reveal>
+        <span class="chapter-intro__num">Chapter III · Editorial</span>
+        <blockquote class="editorial-quote__text">
+          “The finest artifacts are built around a community, never a logo — cut in cotton, canvas, and thread to outlast every checkpoint.”
+        </blockquote>
+        <p class="editorial-quote__attr">High Inference — Probable Systems Archive, Autumn 2026</p>
       </div>
-    </div>
 
-    <div class="spread-layout">
-      <figure class="spread-plate spread-plate--wide" data-reveal>
-        <img
-          src="assets/spread-board-one.webp"
-          alt="High Inference Board One — The Archive flatlay"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption class="spread-plate__cap">
-          <span>PLATE 01 // BOARD ONE — THE ARCHIVE</span>
-          <span>FIELD GARMENTS · VOLUME 01</span>
-        </figcaption>
-      </figure>
-
-      <div class="spread-duo">
-        <figure class="spread-plate" data-reveal>
+      <div class="lookbook">
+        <figure class="lookbook__plate lookbook__plate--hero" data-reveal>
           <img
-            src="assets/spread-two-ways.webp"
-            alt="High Inference, Two Ways — Neural Archive and Optical Study"
+            src="assets/spread-board-one.webp"
+            alt="High Inference Board One — The Archive"
             loading="lazy"
             decoding="async"
           />
-          <figcaption class="spread-plate__cap">
-            <span>PLATE 02 // VISUAL STUDIES 01</span>
-            <span>LOW EVIDENCE · HIGH CONFIDENCE</span>
+          <figcaption class="lookbook__cap">
+            <span>Plate I — The Archive</span>
+            <span>Field Garments · Volume 01</span>
           </figcaption>
         </figure>
 
-        <figure class="spread-plate" data-reveal>
-          <img
-            src="assets/spread-board-three.webp"
-            alt="High Inference Board Three — The Satire Capsule"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption class="spread-plate__cap">
-            <span>PLATE 03 // THE SATIRE CAPSULE</span>
-            <span>HUMAN IN THE LOOP = ME</span>
-          </figcaption>
-        </figure>
+        <div class="lookbook__pair">
+          <figure class="lookbook__plate" data-reveal>
+            <img
+              src="assets/spread-two-ways.webp"
+              alt="High Inference, Two Ways — Visual Studies 01"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="lookbook__cap">
+              <span>Plate II — Visual Studies</span>
+              <span>Low Evidence · High Confidence</span>
+            </figcaption>
+          </figure>
+
+          <figure class="lookbook__plate" data-reveal>
+            <img
+              src="assets/spread-board-three.webp"
+              alt="High Inference — The Satire Capsule"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="lookbook__cap">
+              <span>Plate III — The Satire Capsule</span>
+              <span>Human in the Loop</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
 
-      <div class="manifesto-strip" data-reveal>
-        <div class="manifesto-strip__col">
-          <span class="mono-tag">01 / MARK HIERARCHY</span>
+      <div class="atelier-notes" data-reveal>
+        <div class="atelier-notes__col">
+          <h4>Quiet Provenance</h4>
           <p>
-            Anchored quietly by our 4-tier identity system: Horizon Flare woven neck labels,
-            Lab Spec Plate (HI—01) hem stamps, Vector Apex reflective hits, and Tensor HI micro-tabs.
+            Every garment is anchored discreetly by our four-tier mark hierarchy — woven satin neck labels,
+            tonal hem stamps, and reflective micro-tabs rather than loud chest branding.
           </p>
         </div>
-        <div class="manifesto-strip__col">
-          <span class="mono-tag">02 / TACTILE SPECIFICATION</span>
+        <div class="atelier-notes__col">
+          <h4>Substantial Weight</h4>
           <p>
-            Zero thin blanks. Every piece is spec’d on 6.1 oz garment-dyed Comfort Colors 6014,
-            270–280 GSM combed cotton, 420 GSM boxy fleece, or 12 oz washed duck canvas.
+            No promotional blanks. Each piece is milled on 6.1 oz garment-dyed Comfort Colors 6014,
+            270–280 GSM combed cotton, 420 GSM organic fleece, or 12 oz washed duck canvas.
           </p>
         </div>
-        <div class="manifesto-strip__col">
-          <span class="mono-tag">03 / AGENTIC READY</span>
+        <div class="atelier-notes__col">
+          <h4>Archival Fulfillment</h4>
           <p>
-            Structured catalog metadata, variant packaging specs, and standard <code>Shopify.actions</code>
-            hooks ensure seamless human and WebMCP browser-agent checkout on highinference.com.
+            Dispatched in matte-black archival packaging with structured catalog metadata and native
+            <code>Shopify.actions</code> readiness for seamless human and agentic checkout.
           </p>
         </div>
       </div>
