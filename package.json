@@ -1,0 +1,15 @@
+{
+  "name": "high-inference-supply",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "High Inference (highinference.com) — Drop 01 Interactive WebGL2 & Kinetic Scroll Storefront",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

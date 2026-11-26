@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIGH INFERENCE — Drop 01 // Analog Supply</title>
+    <meta
+      name="description"
+      content="High Inference (highinference.com) Drop 01 — Retro-futuristic analog community apparel, heavyweight 6014 long sleeves, 420GSM hoodies, duck canvas chore coats, and embroidered mission patches."
+    />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Full-bleed interactive WebGL2 kinetic field -->
+    <canvas id="webgl-field" aria-hidden="true"></canvas>
+
+    <!-- Subtle analog grain overlay -->
+    <div class="analog-grain" aria-hidden="true"></div>
+
+    <!-- Top Architectural HUD -->
+    <header id="hud" class="hud" role="banner">
+      <div class="hud__left">
+        <a href="#act-1" class="hud__brand" id="hud-brand" aria-label="High Inference Home">
+          <svg class="hud__mark" viewBox="0 0 28 20" fill="none" aria-hidden="true">
+            <path d="M2 16L10.5 3L19 16" stroke="currentColor" stroke-width="1.6" />
+            <rect x="20.5" y="11.5" width="4.5" height="4.5" fill="#C68A2B" />
+          </svg>
+          <span class="hud__wordmark">HIGH INFERENCE</span>
+          <span class="hud__edition">DROP 01</span>
+        </a>
+      </div>
+
+      <nav class="hud__chapters" aria-label="Storefront chapters">
+        <button class="hud__chapter is-active" data-chapter="1" id="nav-act-1">
+          <span class="hud__chapter-num">01</span>
+          <span class="hud__chapter-label">HERO</span>
+        </button>
+        <button class="hud__chapter" data-chapter="2" id="nav-act-2">
+          <span class="hud__chapter-num">02</span>
+          <span class="hud__chapter-label">APPAREL</span>
+        </button>
+        <button class="hud__chapter" data-chapter="3" id="nav-act-3">
+          <span class="hud__chapter-num">03</span>
+          <span class="hud__chapter-label">OBJECTS</span>
+        </button>
+        <button class="hud__chapter" data-chapter="4" id="nav-act-4">
+          <span class="hud__chapter-num">04</span>
+          <span class="hud__chapter-label">SPREAD</span>
+        </button>
+        <button class="hud__chapter" data-chapter="5" id="nav-act-5">
+          <span class="hud__chapter-num">05</span>
+          <span class="hud__chapter-label">LINEUP</span>
+        </button>
+      </nav>
+
+      <div class="hud__right">
+        <button
+          type="button"
+          class="hud__btn hud__btn--haptics"
+          id="haptics-toggle"
+          aria-pressed="false"
+          title="Toggle tactile vibration feedback on supported devices"
+        >
+          <span class="hud__btn-key">Haptics</span>
+          <span class="hud__btn-val" id="haptics-status">[ Off ]</span>
+        </button>
+
+        <button
+          type="button"
+          class="hud__btn hud__btn--bag"
+          id="bag-toggle"
+          aria-label="Open shopping bag"
+          aria-controls="bag-drawer"
+          aria-expanded="false"
+        >
+          <span class="hud__btn-key">Bag</span>
+          <span class="hud__btn-val" id="bag-count">[ 0 ]</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scroll Progress Rail -->
+    <div class="scroll-rail" aria-hidden="true">
+      <div class="scroll-rail__fill" id="scroll-rail-fill"></div>
+    </div>
+
+    <!-- Main 5-Act Kinetic Scroll Container -->
+    <main id="app-main">
+      <!-- ACT 1: HERO -->
+      <section id="act-1" class="act act--hero" data-act="1" aria-label="Hero"></section>
+
+      <!-- ACT 2: APPAREL SHOWCASES -->
+      <section id="act-2" class="act act--apparel" data-act="2" aria-label="Apparel Showcases"></section>
+
+      <!-- ACT 3: OBJECT & HARDWARE SHOWCASES -->
+      <section id="act-3" class="act act--objects" data-act="3" aria-label="Object Showcases"></section>
+
+      <!-- ACT 4: EDITORIAL ANALOG SPREAD -->
+      <section id="act-4" class="act act--spread" data-act="4" aria-label="Editorial Spread"></section>
+
+      <!-- ACT 5: COMPLETE DROP 01 LINEUP -->
+      <section id="act-5" class="act act--lineup" data-act="5" aria-label="Complete Lineup"></section>
+    </main>
+
+    <!-- Fullscreen Interactive Product Stage Modal -->
+    <div
+      id="product-stage"
+      class="stage"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="stage-title"
+    ></div>
+
+    <!-- Architectural Slide-out Bag Drawer -->
+    <aside
+      id="bag-drawer"
+      class="drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-label="Shopping Bag"
+    ></aside>
+
+    <!-- Backdrop for Drawer / Stage -->
+    <div id="overlay-backdrop" class="backdrop" aria-hidden="true"></div>
+
+    <!-- Subtle Kinetic Toast Feedback -->
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

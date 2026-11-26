@@ -1,0 +1,134 @@
+@media (max-width: 1160px) {
+  .lineup-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hud__chapter-label {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .hud {
+    padding: 0 16px;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .hud__edition {
+    display: none;
+  }
+
+  .hud__chapters {
+    justify-content: center;
+  }
+
+  .chapter-header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 44px;
+  }
+
+  .showcase,
+  .stage__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .showcase--reverse .showcase__media-col,
+  .showcase--reverse .showcase__info-col {
+    order: initial;
+  }
+
+  .stage__viewer-col {
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .hero__telemetry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .telemetry-cell:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .telemetry-cell:nth-child(4) {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .objects-grid,
+  .spread-duo,
+  .manifesto-strip,
+  .lineup-bundles {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-strip__col + .manifesto-strip__col {
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .bundle-callout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --hud-h: 56px;
+  }
+
+  .act {
+    padding: 84px 16px;
+  }
+
+  .hud__chapters {
+    display: none;
+  }
+
+  .hud {
+    grid-template-columns: 1fr auto;
+  }
+
+  .hud__btn {
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+
+  .hero__meta-row {
+    flex-wrap: wrap;
+  }
+
+  .hero__title-line--offset {
+    padding-left: 0;
+  }
+
+  .pab__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .lineup-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stage {
+    padding: 10px;
+  }
+
+  .stage__shell {
+    max-height: calc(100vh - 20px);
+  }
+
+  .stage__viewer-col,
+  .stage__detail-col {
+    padding: 16px;
+  }
+
+  .toast-region {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
