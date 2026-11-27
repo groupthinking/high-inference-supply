@@ -1,0 +1,28 @@
+{% doc %}
+Renders a real Shopify product card with live pricing, availability, and image.
+@param {product} product - The Shopify product object
+@example
+{% render 'product-card', product: product %}
+{% enddoc %}
+
+<article class="hi-card">
+  <a href="{{ product.url }}" class="hi-card__link">
+    <div class="hi-card__media">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 900 | image_tag: class: 'hi-card__img', loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(max-width: 760px) 100vw, 33vw' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'hi-card__placeholder' }}
+      {%- endif -%}
+      {%- unless product.available -%}
+        <span class="hi-card__badge">{{ 'products.sold_out' | t }}</span>
+      {%- endunless -%}
+    </div>
+    <div class="hi-card__meta">
+      <h3 class="hi-card__title">{{ product.title | escape }}</h3>
+      <span class="hi-card__price">{{ product.price | money }}</span>
+    </div>
+    {%- if product.vendor != blank -%}
+      <p class="hi-card__vendor">{{ product.vendor | escape }}</p>
+    {%- endif -%}
+  </a>
+</article>

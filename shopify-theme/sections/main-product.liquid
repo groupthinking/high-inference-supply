@@ -1,0 +1,102 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<section class="hi-section hi-product">
+  <div class="hi-wrap hi-product__grid">
+    <div class="hi-product__gallery">
+      {%- if product.media.size > 0 -%}
+        {%- for media in product.media -%}
+          {%- if media.media_type == 'image' -%}
+            <div class="hi-product__media-item">
+              {%- if forloop.first -%}
+                {{ media | image_url: width: 1200 | image_tag: class: 'hi-product__img', fetchpriority: 'high', widths: '600, 900, 1200', sizes: '(max-width: 900px) 100vw, 55vw' }}
+              {%- else -%}
+                {{ media | image_url: width: 1200 | image_tag: class: 'hi-product__img', loading: 'lazy', widths: '600, 900, 1200', sizes: '(max-width: 900px) 100vw, 55vw' }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'hi-card__placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="hi-product__info">
+      {%- if product.vendor != blank -%}
+        <p class="hi-kicker">{{ product.vendor | escape }}</p>
+      {%- endif -%}
+      <h1 class="hi-product__title">{{ product.title | escape }}</h1>
+      <p class="hi-product__price" id="hi-product-price">{{ current_variant.price | money }}</p>
+
+      {%- if product.description != blank -%}
+        <div class="hi-product__desc rte">{{ product.description }}</div>
+      {%- endif -%}
+
+      {%- form 'product', product, id: 'hi-product-form', class: 'hi-product__form', data-ajax-cart-form: 'true' -%}
+        {%- unless product.has_only_default_variant -%}
+          <div class="hi-product__variants">
+            <label for="hi-variant-select" class="hi-label">{{ product.options | join: ' / ' }}</label>
+            <select id="hi-variant-select" name="id" class="hi-select">
+              {%- for variant in product.variants -%}
+                <option
+                  value="{{ variant.id }}"
+                  data-price="{{ variant.price | money }}"
+                  {% if variant.id == current_variant.id %}selected{% endif %}
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                  {{ variant.title | escape }}
+                  {%- unless variant.available %} &ndash; {{ 'products.sold_out' | t }}{% endunless -%}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+        {%- endunless -%}
+
+        <div class="hi-product__submit-row">
+          <button
+            type="submit"
+            name="add"
+            class="hi-btn hi-btn--solid hi-btn--full"
+            {% unless current_variant.available %}disabled{% endunless %}
+          >
+            {%- if current_variant.available -%}
+              {{ 'products.add_to_bag' | t }}
+            {%- else -%}
+              {{ 'products.sold_out' | t }}
+            {%- endif -%}
+          </button>
+          {{ form | payment_button }}
+        </div>
+      {%- endform -%}
+
+      {%- if product.metafields.custom.garment_blank != blank or product.metafields.custom.print_method != blank -%}
+        <dl class="hi-specs">
+          {%- if product.metafields.custom.garment_blank != blank -%}
+            <div class="hi-specs__row">
+              <dt>{{ 'products.blank_label' | t }}</dt>
+              <dd>{{ product.metafields.custom.garment_blank | metafield_text }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if product.metafields.custom.print_method != blank -%}
+            <div class="hi-specs__row">
+              <dt>{{ 'products.print_label' | t }}</dt>
+              <dd>{{ product.metafields.custom.print_method | metafield_text }}</dd>
+            </div>
+          {%- endif -%}
+        </dl>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main_product.name",
+  "settings": []
+}
+{% endschema %}

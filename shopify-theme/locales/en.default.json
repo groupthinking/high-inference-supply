@@ -1,0 +1,38 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "haptics": "Haptics",
+    "haptics_on": "On",
+    "haptics_off": "Off",
+    "bag": "Bag",
+    "close": "Close",
+    "not_found_title": "Page not found",
+    "not_found_body": "The page you requested does not exist.",
+    "continue_shopping": "Browse catalog"
+  },
+  "products": {
+    "add_to_bag": "Add to bag",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "vendor_label": "Fulfillment",
+    "blank_label": "Blank",
+    "print_label": "Print",
+    "no_products_title": "No products published yet",
+    "no_products_body": "Publish products from Printify or Shopify Admin into this collection to display live vendor inventory here."
+  },
+  "cart": {
+    "title": "Bag",
+    "empty": "Your bag is empty.",
+    "subtotal": "Subtotal",
+    "shipping_note": "Taxes and shipping calculated at checkout.",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "update": "Update bag"
+  },
+  "footer": {
+    "policies": "Policies",
+    "rights": "All rights reserved."
+  }
+}

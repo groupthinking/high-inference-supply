@@ -1,0 +1,39 @@
+<div class="hi-backdrop" id="hi-drawer-backdrop" aria-hidden="true"></div>
+<aside
+  id="hi-cart-drawer"
+  class="hi-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-label="{{ 'cart.title' | t }}"
+  data-empty-text="{{ 'cart.empty' | t | escape }}"
+  data-remove-text="{{ 'cart.remove' | t | escape }}"
+  data-decrease-text="{{ 'cart.decrease' | t | escape }}"
+  data-increase-text="{{ 'cart.increase' | t | escape }}"
+>
+  <div class="hi-drawer__head">
+    <h2>{{ 'cart.title' | t }}</h2>
+    <button type="button" class="hi-header__btn" id="hi-cart-close">{{ 'general.close' | t }}</button>
+  </div>
+  <div class="hi-drawer__body" id="hi-drawer-body"></div>
+  <div class="hi-drawer__foot" id="hi-drawer-foot">
+    <div class="hi-cart-summary__row">
+      <span>{{ 'cart.subtotal' | t }}</span>
+      <strong id="hi-drawer-subtotal">{{ cart.total_price | money }}</strong>
+    </div>
+    <p class="hi-cart-summary__note">{{ 'cart.shipping_note' | t }}</p>
+    <a href="{{ routes.cart_url }}" class="hi-btn hi-btn--outline hi-btn--full">{{ 'cart.title' | t }}</a>
+    <form action="{{ routes.cart_url }}" method="post">
+      <button type="submit" name="checkout" class="hi-btn hi-btn--solid hi-btn--full">
+        {{ 'cart.checkout' | t }}
+      </button>
+    </form>
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "t:sections.cart_drawer.name",
+  "settings": []
+}
+{% endschema %}

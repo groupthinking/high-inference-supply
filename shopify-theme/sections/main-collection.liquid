@@ -1,0 +1,38 @@
+<section class="hi-section">
+  <div class="hi-wrap">
+    <div class="hi-section__head">
+      <h1 class="hi-section__title">{{ collection.title | escape }}</h1>
+    </div>
+
+    {%- if collection.description != blank -%}
+      <div class="hi-collection__desc rte">{{ collection.description }}</div>
+    {%- endif -%}
+
+    {%- paginate collection.products by 12 -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="hi-grid">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <nav class="hi-pagination" aria-label="Pagination">
+            {{ paginate | default_pagination }}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <div class="hi-empty">
+          <h3>{{ 'products.no_products_title' | t }}</h3>
+          <p>{{ 'products.no_products_body' | t }}</p>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_collection.name",
+  "settings": []
+}
+{% endschema %}

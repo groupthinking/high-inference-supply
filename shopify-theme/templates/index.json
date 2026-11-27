@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "kicker": "Edition 01",
+        "heading": "High Inference",
+        "subheading": "Heavyweight garment-dyed apparel and small-batch hardware produced with verified US fulfillment partners.",
+        "cta_label": "Shop catalog"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Catalog",
+        "limit": 12
+      }
+    }
+  },
+  "order": ["hero", "featured_collection"]
+}

@@ -1,0 +1,10 @@
+{
+  "current": {
+    "color_background": "#F7F7F5",
+    "color_surface": "#FFFFFF",
+    "color_ink": "#111111",
+    "color_muted": "#5E5E5A",
+    "color_accent": "#111111",
+    "enable_haptics_toggle": true
+  }
+}

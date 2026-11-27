@@ -1,0 +1,64 @@
+{
+  "settings_schema": {
+    "colors": {
+      "name": "Colors",
+      "settings": {
+        "background": "Background",
+        "surface": "Surface",
+        "ink": "Primary text",
+        "muted": "Secondary text",
+        "accent": "Accent"
+      }
+    },
+    "store": {
+      "name": "Store preferences",
+      "settings": {
+        "favicon": "Favicon",
+        "enable_haptics_toggle": "Show opt-in haptics toggle in header"
+      }
+    }
+  },
+  "sections": {
+    "header": {
+      "name": "Header",
+      "menu": "Navigation menu"
+    },
+    "hero": {
+      "name": "Hero",
+      "kicker": "Eyebrow",
+      "heading": "Heading",
+      "subheading": "Subheading",
+      "cta_label": "Button label",
+      "cta_link": "Button link",
+      "image": "Hero image"
+    },
+    "featured_collection": {
+      "name": "Featured collection",
+      "heading": "Heading",
+      "collection": "Collection",
+      "limit": "Maximum products to show"
+    },
+    "main_product": {
+      "name": "Product page"
+    },
+    "main_collection": {
+      "name": "Collection page"
+    },
+    "main_cart": {
+      "name": "Cart page"
+    },
+    "main_page": {
+      "name": "Page content"
+    },
+    "main_404": {
+      "name": "404 page"
+    },
+    "cart_drawer": {
+      "name": "Cart drawer"
+    },
+    "footer": {
+      "name": "Footer",
+      "note": "Store note"
+    }
+  }
+}

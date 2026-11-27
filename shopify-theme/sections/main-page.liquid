@@ -1,0 +1,15 @@
+<section class="hi-section">
+  <div class="hi-wrap hi-wrap--narrow">
+    <h1 class="hi-section__title">{{ page.title | escape }}</h1>
+    <div class="hi-page-content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_page.name",
+  "settings": []
+}
+{% endschema %}

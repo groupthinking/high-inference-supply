@@ -3,108 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HIGH INFERENCE — Edition 01</title>
+    <title>High Inference — Storefront</title>
     <meta
       name="description"
-      content="High Inference (highinference.com) — Edition 01. Architectural garments and archival objects for the analog frontier."
-    />
-    <meta name="theme-color" content="#09090B" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
-      rel="stylesheet"
+      content="High Inference Shopify Storefront powered by the Shopify Storefront GraphQL API."
     />
   </head>
-  <body data-theme="dark">
-    <!-- Full-bleed luxury WebGL2 silk-caustic light field -->
-    <canvas id="webgl-field" aria-hidden="true"></canvas>
+  <body>
+    <a class="hi-skip" href="#main-content">Skip to content</a>
 
-    <!-- Minimal adaptive top navigation -->
-    <header id="hud" class="hud hud--dark" role="banner">
-      <div class="hud__left">
-        <a href="#act-1" class="hud__brand" id="hud-brand" aria-label="High Inference Home">
-          <svg class="hud__mark" viewBox="0 0 28 20" fill="none" aria-hidden="true">
-            <path d="M2 16L10.5 3L19 16" stroke="currentColor" stroke-width="1.35" />
-            <rect x="21" y="12" width="4" height="4" fill="#B58947" />
+    <div id="api-banner" class="hi-banner" hidden></div>
+
+    <header class="hi-header" role="banner">
+      <div class="hi-header__inner">
+        <a href="#catalog" class="hi-header__brand" id="store-brand">
+          <svg class="hi-header__mark" viewBox="0 0 28 20" fill="none" aria-hidden="true">
+            <path d="M2 16L10.5 3L19 16" stroke="currentColor" stroke-width="1.5" />
+            <rect x="21" y="12" width="4" height="4" fill="currentColor" />
           </svg>
-          <span class="hud__wordmark">HIGH INFERENCE</span>
+          <span id="store-name">High Inference</span>
         </a>
-      </div>
 
-      <nav class="hud__chapters" aria-label="Edition chapters">
-        <button class="hud__chapter is-active" data-chapter="1" id="nav-act-1">Prologue</button>
-        <button class="hud__chapter" data-chapter="2" id="nav-act-2">Garments</button>
-        <button class="hud__chapter" data-chapter="3" id="nav-act-3">Objects</button>
-        <button class="hud__chapter" data-chapter="4" id="nav-act-4">Editorial</button>
-        <button class="hud__chapter" data-chapter="5" id="nav-act-5">Archive</button>
-      </nav>
+        <nav class="hi-header__nav" aria-label="Primary">
+          <a href="#catalog" class="hi-header__link">Catalog</a>
+          <a href="#policies" class="hi-header__link">Policies</a>
+        </nav>
 
-      <div class="hud__right">
-        <button
-          type="button"
-          class="hud__control hud__control--haptics"
-          id="haptics-toggle"
-          aria-pressed="false"
-          title="Toggle opt-in tactile vibration on supported devices"
-        >
-          <span>Haptics</span>
-          <span class="hud__control-val" id="haptics-status">[ Off ]</span>
-        </button>
-
-        <button
-          type="button"
-          class="hud__control hud__control--bag"
-          id="bag-toggle"
-          aria-label="Open shopping bag"
-          aria-controls="bag-drawer"
-          aria-expanded="false"
-        >
-          <span>Bag</span>
-          <span class="hud__control-val" id="bag-count">(0)</span>
-        </button>
+        <div class="hi-header__actions">
+          <button type="button" class="hi-header__btn" id="haptics-toggle" aria-pressed="false">
+            Haptics [<span id="haptics-state">Off</span>]
+          </button>
+          <button
+            type="button"
+            class="hi-header__btn"
+            id="cart-open-btn"
+            aria-controls="cart-drawer"
+            aria-expanded="false"
+          >
+            Bag (<span id="cart-count">0</span>)
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Hairline scroll progress -->
-    <div class="scroll-rail" aria-hidden="true">
-      <div class="scroll-rail__fill" id="scroll-rail-fill"></div>
-    </div>
-
-    <!-- Main 5-Act Editorial Journey -->
-    <main id="app-main">
-      <section id="act-1" class="act act--hero" data-act="1" data-surface="dark" aria-label="Prologue"></section>
-      <section id="act-2" class="act act--apparel" data-act="2" data-surface="light" aria-label="Garments"></section>
-      <section id="act-3" class="act act--objects" data-act="3" data-surface="light" aria-label="Objects"></section>
-      <section id="act-4" class="act act--spread" data-act="4" data-surface="light" aria-label="Editorial"></section>
-      <section id="act-5" class="act act--lineup" data-act="5" data-surface="dark" aria-label="Archive"></section>
+    <main id="main-content" class="hi-main" tabindex="-1">
+      <section class="hi-section" id="catalog">
+        <div class="hi-wrap">
+          <div class="hi-section__head">
+            <h1 class="hi-section__title" id="catalog-heading">Catalog</h1>
+            <span class="hi-kicker" id="catalog-count">Loading Shopify catalog…</span>
+          </div>
+          <div id="product-grid" class="hi-grid" aria-live="polite"></div>
+        </div>
+      </section>
     </main>
 
-    <!-- Fullscreen Viewing Room (Product Stage) -->
+    <footer class="hi-footer" id="policies" role="contentinfo">
+      <div class="hi-wrap hi-footer__inner">
+        <div>
+          <p class="hi-footer__name" id="footer-store-name">High Inference</p>
+          <p class="hi-footer__note">
+            Powered by Shopify Storefront GraphQL API (2026-01) · Native Shopify Checkout
+          </p>
+        </div>
+        <nav class="hi-footer__policies" id="policy-links" aria-label="Store policies"></nav>
+      </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="hi-backdrop" id="modal-backdrop" aria-hidden="true"></div>
     <div
-      id="product-stage"
-      class="stage"
+      id="product-modal"
+      class="hi-modal"
       role="dialog"
       aria-modal="true"
       aria-hidden="true"
-      aria-labelledby="stage-title"
+      aria-labelledby="modal-title"
     ></div>
 
-    <!-- Slide-out Shopping Bag Drawer -->
+    <!-- Policy Reader Modal -->
+    <div
+      id="policy-modal"
+      class="hi-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="policy-modal-title"
+    ></div>
+
+    <!-- Real Shopify Cart Drawer -->
     <aside
-      id="bag-drawer"
-      class="drawer"
+      id="cart-drawer"
+      class="hi-drawer"
       role="dialog"
       aria-modal="true"
       aria-hidden="true"
       aria-label="Shopping Bag"
     ></aside>
-
-    <!-- Overlay Backdrop -->
-    <div id="overlay-backdrop" class="backdrop" aria-hidden="true"></div>
-
-    <!-- Whisper-quiet Toast Feedback -->
-    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

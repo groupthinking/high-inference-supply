@@ -1,0 +1,45 @@
+<footer class="hi-footer" role="contentinfo">
+  <div class="hi-wrap hi-footer__inner">
+    <div class="hi-footer__brand">
+      <p class="hi-footer__name">{{ shop.name | escape }}</p>
+      {%- if section.settings.note != blank -%}
+        <p class="hi-footer__note">{{ section.settings.note | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if shop.policies.size > 0 -%}
+      <nav class="hi-footer__policies" aria-label="{{ 'footer.policies' | t }}">
+        {%- for policy in shop.policies -%}
+          {%- if policy != blank -%}
+            <a href="{{ policy.url }}" class="hi-footer__link">{{ policy.title | escape }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+
+    <div class="hi-footer__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. {{ 'footer.rights' | t }}</p>
+      {%- if shop.enabled_payment_types.size > 0 -%}
+        <ul class="hi-payments" aria-label="Accepted payment methods">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'hi-payments__icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "note",
+      "label": "t:sections.footer.note",
+      "default": "highinference.com — Fulfilled via verified US print & apparel partners."
+    }
+  ]
+}
+{% endschema %}

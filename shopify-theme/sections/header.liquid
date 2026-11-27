@@ -1,0 +1,57 @@
+<header class="hi-header" role="banner">
+  <div class="hi-header__inner">
+    <a href="{{ routes.root_url }}" class="hi-header__brand">
+      <svg class="hi-header__mark" viewBox="0 0 28 20" fill="none" aria-hidden="true">
+        <path d="M2 16L10.5 3L19 16" stroke="currentColor" stroke-width="1.5" />
+        <rect x="21" y="12" width="4" height="4" fill="currentColor" />
+      </svg>
+      <span>{{ shop.name | escape }}</span>
+    </a>
+
+    <nav class="hi-header__nav" aria-label="{{ section.settings.menu }}">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}" class="hi-header__link{% if link.active %} is-active{% endif %}">
+          {{ link.title | escape }}
+        </a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="hi-header__actions">
+      {%- if settings.enable_haptics_toggle -%}
+        <button
+          type="button"
+          class="hi-header__btn"
+          id="hi-haptics-toggle"
+          aria-pressed="false"
+          data-label-on="{{ 'general.haptics_on' | t }}"
+          data-label-off="{{ 'general.haptics_off' | t }}"
+        >
+          {{ 'general.haptics' | t }} [<span id="hi-haptics-state">{{ 'general.haptics_off' | t }}</span>]
+        </button>
+      {%- endif -%}
+      <button
+        type="button"
+        class="hi-header__btn hi-header__bag"
+        id="hi-cart-open"
+        aria-controls="hi-cart-drawer"
+        aria-expanded="false"
+      >
+        {{ 'general.bag' | t }} (<span id="hi-cart-count">{{ cart.item_count }}</span>)
+      </button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.header.menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}
